@@ -1,39 +1,56 @@
 # BaBa Is You
 <img src="https://i.imgur.com/44OJbB0.gif">
 
-### [Play Now](https://baba.xcc.tw/)
+Please refer to [README_original.md](README_original.md) to check the original readme.
 
-![Sonar Quality Gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Xanonymous-GitHub_BaBaIsYou)
-<br />
-[![Netlify Status](https://api.netlify.com/api/v1/badges/dd844fdb-6420-4ac8-b7eb-119dc3d0647a/deploy-status)](https://app.netlify.com/sites/baba-is-you/deploys)
-![](https://sonarcloud.io/api/project_badges/measure?project=Xanonymous-GitHub_BaBaIsYou&metric=sqale_rating)
-![](https://sonarcloud.io/api/project_badges/measure?project=Xanonymous-GitHub_BaBaIsYou&metric=security_rating)
-![](https://sonarcloud.io/api/project_badges/measure?project=Xanonymous-GitHub_BaBaIsYou&metric=reliability_rating)
+Here is your revised text with minimal grammar and clarity improvements:
 
-## Announcement
-This is a reimplementation of a desktop game [Baba Is You](https://hempuli.com/baba/) which is **only used for educational purposes**. <br>
-If you want the play the origin version of Baba Is You, please purchase it [here](https://store.steampowered.com/app/736260/Baba_Is_You/). 
+---
 
-## Introduction
-Baba Is You is a puzzle game where the rules you have to follow are present as physical objects in the game world. <br>
-By manipulating the rules, you can change how the game works, repurpose things you find in the levels and cause surprising interactions!
+## Setup
 
-## How to Play
-In each level, you can see several objects and words on the game map. <br>
-You can use the arrow keys to control the movement of certain objects, find the associated word to the object that you can control, and you will see it makes a `BABA IS YOU` pattern. <br>
-Next, find the object that is connected with the words `IS WIN` to end the game. <br>
-Try to move blocks to use various patterns to solve every level! <br>
+### For JavaScript
 
-To know more about the rules, check out [Baba Is You Wiki](https://babaiswiki.fandom.com/wiki/Baba_Is_You_Wiki). <br>
-(This project is just a clone version of Baba Is You, there might be some effects that are not equivalent to the original game.)
+You need to prepare `pnpm`, which is a package manager for JavaScript. We are currently using `pnpm@9.1.2`, but the version is not strictly fixed. As long as you update `Node.js` and get a compatible newer `pnpm` version (e.g., `pnpm@9` or `pnpm@10`), you can modify the `"packageManager"` field in `package.json` accordingly and check if it is executable.
 
-## Controls
-- `ESC`: Menu
-- `R`: Restart level
-- Arrow keys: Move up/down/left/right, you can also use W/A/S/D.
+Once you have set up `pnpm`, run the following:
 
-## Bugs
-There are actually many bugs to be fixed in this project. If you find them while playing, please let us know as much as possible.
+```bash
+cd BaBaIsYou
+pnpm install
+```
 
-## About us
-Hi! We are students from National Taipei University of Technology with a strong passion in programming. Check out our profiles if you like our projects!
+You should see a message confirming that it has been installed successfully.
+
+### For Python
+
+We use `Python` for headless interaction with the game. If you only want to play the game, you may skip this step.
+
+We recommend creating a new virtual environment with `conda`:
+
+```bash
+conda create -n baba python=3.9
+conda activate baba
+pip install playwright  # or try: pip install pytest-playwright
+playwright install
+```
+
+## Deploy
+
+### Game Deployment
+
+Run the following command:
+
+```bash
+pnpm dev
+```
+
+You should see a prompt indicating that the game is deployed on `localhost:5173`. You can access it through your browser (after binding the port, if necessary).
+
+### Headless Test
+
+Once the game is deployed, you should be able to interact with it using Python:
+
+```bash
+python game_map.py
+```
