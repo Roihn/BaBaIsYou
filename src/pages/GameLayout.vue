@@ -78,15 +78,25 @@
     }
   }
 
+  // const handleR = (event: ExtendedKeyboardEvent) => {
+  //   event.preventDefault()
+  //   event.stopImmediatePropagation()
+  //   event.stopPropagation()
+  //   menuType.value = MenuType.RESTART
+  //   menuKey.value++
+  //   gamePause()
+  //   showMenu.value = true
+  // }
+
   const handleR = (event: ExtendedKeyboardEvent) => {
     event.preventDefault()
     event.stopImmediatePropagation()
     event.stopPropagation()
-    menuType.value = MenuType.RESTART
-    menuKey.value++
+
     gamePause()
-    showMenu.value = true
+    startNewGame()
   }
+
 
   const setAudioSrc = (filename?: string) => {
     const pathPrefix = '/music/'
