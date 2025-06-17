@@ -101,7 +101,7 @@
     showNoYouAlertBar.value = false
     mousetrap.bind('esc', handleEsc)
     mousetrap.bind('r', handleR)
-    setAudioSrc(globalState.value.currentLevel.backgroundMusic)
+    // setAudioSrc(globalState.value.currentLevel.backgroundMusic)
     await audio.play()
   }
 
@@ -154,6 +154,8 @@
 
   tryOnMounted(async () => {
     game = await (async () => (await import('@/core')).default)()
+    // Expose game instance to window for debugging
+    window.game = game
     prepareGame()
     await startNewGame()
   })
