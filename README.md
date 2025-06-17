@@ -3,8 +3,6 @@
 
 Please refer to [README_original.md](README_original.md) to check the original readme.
 
-Here is your revised text with minimal grammar and clarity improvements:
-
 ---
 
 ## Setup
