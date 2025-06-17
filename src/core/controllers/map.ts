@@ -44,6 +44,7 @@ export interface MapController {
   checkYouExistsInMap: (youThings: Array<ThingType>) => Promise<boolean>
   clean: () => void
   changeMapSize: (mapEdge: Edge) => void
+  printMap: () => void
 }
 
 class MapControllerConcrete implements MapController {
@@ -348,6 +349,57 @@ class MapControllerConcrete implements MapController {
     }
 
     this.clean()
+  }
+
+  public getMapAsString(): string {
+    let output = '';
+  
+    output += 'Debug: printMap called\n';
+    output += `Debug: Map dimensions: ${JSON.stringify({ maxX: this.maxX, maxY: this.maxY })}\n\n`;
+  
+    output += 'Current Map State:\n';
+    output += '------------------\n';
+  
+    // Column headers
+    let header = '    ';
+    for (let x = 0; x <= this.maxX; x++) {
+      header += ` ${x.toString().padStart(2)} `;
+    }
+    output += header + '\n';
+    output += '    ' + '---'.repeat(this.maxX + 1) + '\n';
+  
+    // Each row
+    for (let y = 0; y <= this.maxY; y++) {
+      let row = `${y.toString().padStart(2)} |`;
+      for (let x = 0; x <= this.maxX; x++) {
+        const cell = this._gameMap[x][y];
+        if (isNone(cell)) {
+          row += '   ';
+        } else {
+          const things = (cell as Some<Array<Thing>>).value;
+          if (things.length === 0) {
+            row += '   ';
+          } else if (things.length === 1) {
+            row += ` ${things[0].thingName.charAt(0)} `;
+          } else {
+            row += ' * ';
+          }
+        }
+      }
+      output += row + '\n';
+    }
+  
+    output += '\nLegend:\n';
+    output += '- Empty cell: blank space\n';
+    output += '- Single thing: first letter of thing name\n';
+    output += '- Multiple things: *\n';
+    output += '------------------\n';
+  
+    return output;
+  }
+  
+  public printMap(): void {
+    console.log(this.getMapAsString());
   }
 }
 

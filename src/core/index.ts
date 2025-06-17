@@ -3,7 +3,7 @@ import { createGameStore } from './store'
 import { createStageBuilder } from './builders/stage'
 import { createContainerBuilder } from './builders/container'
 import { createSpriteBuilder } from './builders/sprite'
-import { startLevel, setGameOverOutsideHandler, setYouGoneOutsideHandler, pause, resume } from '@/core/game'
+import { startLevel, setGameOverOutsideHandler, setYouGoneOutsideHandler, pause, resume, printMap, getMapAsString } from '@/core/game'
 import type { GameCore } from '@/core/types'
 import { appOptions } from './app/configs'
 
@@ -33,7 +33,9 @@ const gameCore = async (): Promise<GameCore> => {
     pause,
     resume,
     setYouGoneOutsideHandler,
-    setGameOverOutsideHandler
+    setGameOverOutsideHandler,
+    printMap,
+    getMapAsString
   }
 }
 

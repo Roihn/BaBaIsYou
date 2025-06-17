@@ -84,3 +84,21 @@ export const resume = () => {
   // start command dispatcher.
   store.initDispatchServer()
 }
+
+export const printMap = () => {
+  const mapController = store.getMapController()
+  if (mapController) {
+    mapController.printMap()
+  } else {
+    console.log('Map controller not initialized')
+  }
+}
+
+export const getMapAsString = (): string => {
+  const mapController = store.getMapController()
+  if (mapController) {
+    return mapController.getMapAsString()
+  } else {
+    return 'Map controller not initialized'
+  }
+}

@@ -32,4 +32,6 @@ export interface GameCore {
   resume: () => void
   setGameOverOutsideHandler: (handler: (gameResult: GameResult) => Promise<void>) => void
   setYouGoneOutsideHandler: (handler: (existYou: boolean) => Promise<void>) => void
+  printMap: () => void
+  getMapAsString: () => string
 }
