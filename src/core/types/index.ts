@@ -34,4 +34,5 @@ export interface GameCore {
   setYouGoneOutsideHandler: (handler: (existYou: boolean) => Promise<void>) => void
   printMap: () => void
   getMapAsString: () => string
+  getMapAsObject: () => object
 }

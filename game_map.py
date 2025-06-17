@@ -39,7 +39,7 @@ def navigate_and_print_map():
 
             # 6. Extract and print the game map
             print("\nExtracted Game Map:")
-            game_map = page.evaluate("() => window.game.getMapAsString()")
+            game_map = page.evaluate("() => window.game.getMapAsObject()")
             print(game_map)
 
                 

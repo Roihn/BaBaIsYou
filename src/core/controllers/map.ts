@@ -351,6 +351,39 @@ class MapControllerConcrete implements MapController {
     this.clean()
   }
 
+  public getMapAsObject(): object {
+    let output: any = {
+      width: this.maxX,
+      height: this.maxY,
+    };
+  
+    // Store map detailed info in an array
+    let map: object[][] = new Array(this.maxY + 1);
+    for (let y = 0; y <= this.maxY; y++) {
+      map[y] = new Array(this.maxX + 1);
+      for (let x = 0; x <= this.maxX; x++) {
+        const cell = this._gameMap[x][y];
+        let data: object[] = [];
+        if (!isNone(cell)) {
+          const things = (cell as Some<Array<Thing>>).value;
+          for (const thing of things) {
+            data.push({
+              name: thing.thingName,
+              species: thing.species,
+              x: x,
+              y: y,
+              towards: thing.towards
+            });
+          }
+        }
+        map[y][x] = data;
+      }
+    }
+  
+    output.map = map;
+    return output;
+  }
+
   public getMapAsString(): string {
     let output = '';
   
@@ -400,6 +433,7 @@ class MapControllerConcrete implements MapController {
   
   public printMap(): void {
     console.log(this.getMapAsString());
+    console.log(this.getMapAsObject());
   }
 }
 

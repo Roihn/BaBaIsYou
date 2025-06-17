@@ -102,3 +102,12 @@ export const getMapAsString = (): string => {
     return 'Map controller not initialized'
   }
 }
+
+export const getMapAsObject = (): object => {
+  const mapController = store.getMapController()
+  if (mapController) {
+    return mapController.getMapAsObject()
+  } else {
+    return 'Map controller not initialized'
+  }
+}
