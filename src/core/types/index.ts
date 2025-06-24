@@ -35,4 +35,5 @@ export interface GameCore {
   printMap: () => void
   getMapAsString: () => string
   getMapAsObject: () => object
+  getCurrentGameStatus: () => string
 }
